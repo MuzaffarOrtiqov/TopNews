@@ -1,13 +1,25 @@
-📰 TopNews — Modern News Portal like kun.uz/daryo.uz
-TopNews is a full-fledged news portal similar to kun.uz, daryo.uz, and qalampir.uz, developed for users to read, search, like, comment on, and save news articles. It also integrates features for multi-role user management, multi-language support, and Telegram bot notifications for real-time moderation.
+# 📰 TopNews — Modern News Portal like kun.uz / daryo.uz
 
-🛠️ Tech Stack 
-Backend: Java (Spring Boot)
+**TopNews** is a full-fledged news portal inspired by platforms like kun.uz, daryo.uz, and qalampir.uz.
 
-Database: PostgreSQL
+Users can:
+- 📖 Read and search news articles
+- ❤️ Like and 💬 comment on posts
+- 💾 Save articles for later
+- 🔔 Get real-time moderation via Telegram bot
+- 🌐 Use multi-language support
+- 👥 Enjoy multi-role user management
 
-Security: Spring Security + JWT
+---
 
-Frontend: HMTL/CSS /Javascipt
+## 🛠️ Tech Stack
 
-Bot: Telegram Bot API integration
+**Backend:** Java (Spring Boot)  
+**Database:** PostgreSQL  
+**Security:** Spring Security + JWT  
+**Frontend:** HTML / CSS / JavaScript  
+**Bot:** Telegram Bot API integration
+
+---
+
+> © 2025 Muzaffar Ortiqov — TopNews Project
