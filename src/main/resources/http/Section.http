@@ -1,0 +1,47 @@
+### CREATE A SECTION
+POST localhost:8080/api/v1/section/create
+Content-Type: application/json
+Accept-Language: EN
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiUk9MRV9BRE1JTixST0xFX1VTRVIiLCJpZCI6ImJhNzY1YjJiLTUzZWItNDEwZi1hOTJjLWNhNDUxNjgxYmFlMSIsInN1YiI6Im11emFmZmFybWlrZTJAZ21haWwuY29tIiwiaWF0IjoxNzQ5NjM0OTU3LCJleHAiOjE3NDk3MjEzNTd9.bxV1mJMQ9l-71o4fnocYBR5scUYuw9k9c1o4NwgUkKUo15JHuL5goWlIzty2Z04o3PZJfuyYI6NGP2ZZd6aUqg
+
+{
+  "orderNumber": 1,
+  "nameUz": "Asosiy",
+  "nameRu": "Osnovnoy",
+  "nameEn": "Main",
+  "key": "asosiy"
+}
+
+### UPDATE A SECTION
+PUT localhost:8080/api/v1/section/detail/459ef8fa-654f-4ffa-a8bc-15cfa023360d
+Content-Type: application/json
+Accept-Language: EN
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiUk9MRV9BRE1JTixST0xFX1VTRVIiLCJpZCI6ImJhNzY1YjJiLTUzZWItNDEwZi1hOTJjLWNhNDUxNjgxYmFlMSIsInN1YiI6Im11emFmZmFybWlrZTJAZ21haWwuY29tIiwiaWF0IjoxNzQ5NjM0OTU3LCJleHAiOjE3NDk3MjEzNTd9.bxV1mJMQ9l-71o4fnocYBR5scUYuw9k9c1o4NwgUkKUo15JHuL5goWlIzty2Z04o3PZJfuyYI6NGP2ZZd6aUqg
+
+{
+  "orderNumber": 5,
+  "nameUz": "Fotolavhalar",
+  "nameRu": "Фотографии",
+  "nameEn": "Photographs",
+  "key": "photos"
+}
+
+### DELETE A SECTION
+DELETE localhost:8080/api/v1/section/delete/459ef8fa-654f-4ffa-a8bc-15cfa023360d
+Content-Type: application/json
+Accept-Language: EN
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiUk9MRV9BRE1JTixST0xFX1VTRVIiLCJpZCI6ImJhNzY1YjJiLTUzZWItNDEwZi1hOTJjLWNhNDUxNjgxYmFlMSIsInN1YiI6Im11emFmZmFybWlrZTJAZ21haWwuY29tIiwiaWF0IjoxNzQ5NjM0OTU3LCJleHAiOjE3NDk3MjEzNTd9.bxV1mJMQ9l-71o4fnocYBR5scUYuw9k9c1o4NwgUkKUo15JHuL5goWlIzty2Z04o3PZJfuyYI6NGP2ZZd6aUqg
+
+
+### GET ALL SECTIONS
+GET localhost:8080/api/v1/section/
+Content-Type: application/json
+Accept-Language: EN
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiUk9MRV9BRE1JTixST0xFX1VTRVIiLCJpZCI6ImJhNzY1YjJiLTUzZWItNDEwZi1hOTJjLWNhNDUxNjgxYmFlMSIsInN1YiI6Im11emFmZmFybWlrZTJAZ21haWwuY29tIiwiaWF0IjoxNzQ5NjM0OTU3LCJleHAiOjE3NDk3MjEzNTd9.bxV1mJMQ9l-71o4fnocYBR5scUYuw9k9c1o4NwgUkKUo15JHuL5goWlIzty2Z04o3PZJfuyYI6NGP2ZZd6aUqg
+
+
+### GET ALL SECTIONS BY LANGUAGE
+GET localhost:8080/api/v1/section/lang?lang=UZ
+Content-Type: application/json
+Accept-Language: EN
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiUk9MRV9BRE1JTixST0xFX1VTRVIiLCJpZCI6ImJhNzY1YjJiLTUzZWItNDEwZi1hOTJjLWNhNDUxNjgxYmFlMSIsInN1YiI6Im11emFmZmFybWlrZTJAZ21haWwuY29tIiwiaWF0IjoxNzQ5NjM0OTU3LCJleHAiOjE3NDk3MjEzNTd9.bxV1mJMQ9l-71o4fnocYBR5scUYuw9k9c1o4NwgUkKUo15JHuL5goWlIzty2Z04o3PZJfuyYI6NGP2ZZd6aUqg

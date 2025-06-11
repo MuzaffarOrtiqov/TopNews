@@ -24,6 +24,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -70,7 +72,7 @@ public class AuthService {
         profileEntity.setPassword(bCryptPasswordEncoder.encode(dto.getPassword()));
         profileEntity.setStatus(GeneralStatus.IN_REGISTRATION);
         profileRepository.save(profileEntity);
-        profileRoleService.create(profileEntity.getId(), ProfileRole.ROLE_USER);
+        profileRoleService.create(profileEntity.getId(), List.of(ProfileRole.ROLE_USER));
         // check if email valid
         if (ValidityUtil.isValidEmail(dto.getUsername())) {
             emailSendingService.sendRegistrationEmail(dto.getUsername(), profileEntity.getId(), lang.name());

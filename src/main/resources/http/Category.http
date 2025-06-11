@@ -1,0 +1,47 @@
+### CREATE A CATEGORY
+POST localhost:8080/api/v1/category/create
+Content-Type: application/json
+Accept-Language: EN
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiUk9MRV9BRE1JTixST0xFX1VTRVIiLCJpZCI6ImJhNzY1YjJiLTUzZWItNDEwZi1hOTJjLWNhNDUxNjgxYmFlMSIsInN1YiI6Im11emFmZmFybWlrZTJAZ21haWwuY29tIiwiaWF0IjoxNzQ5NjM0OTU3LCJleHAiOjE3NDk3MjEzNTd9.bxV1mJMQ9l-71o4fnocYBR5scUYuw9k9c1o4NwgUkKUo15JHuL5goWlIzty2Z04o3PZJfuyYI6NGP2ZZd6aUqg
+
+{
+  "orderNumber": 3,
+  "nameUz": "Jamiyat",
+  "nameRu": "Общество",
+  "nameEn": "Society",
+  "key": "jamiyat"
+}
+
+### UPDATE A CATEGORY
+PUT localhost:8080/api/v1/category/detail/6de3bd11-92bc-4b5f-8faf-2c0b64033b14
+Content-Type: application/json
+Accept-Language: EN
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiUk9MRV9BRE1JTixST0xFX1VTRVIiLCJpZCI6ImJhNzY1YjJiLTUzZWItNDEwZi1hOTJjLWNhNDUxNjgxYmFlMSIsInN1YiI6Im11emFmZmFybWlrZTJAZ21haWwuY29tIiwiaWF0IjoxNzQ5NjM0OTU3LCJleHAiOjE3NDk3MjEzNTd9.bxV1mJMQ9l-71o4fnocYBR5scUYuw9k9c1o4NwgUkKUo15JHuL5goWlIzty2Z04o3PZJfuyYI6NGP2ZZd6aUqg
+
+{
+  "orderNumber": 4,
+  "nameUz": "Jamiyat",
+  "nameRu": "Общество",
+  "nameEn": "Society",
+  "key": "jamiyat"
+}
+
+### DELETE A CATEGORY
+DELETE localhost:8080/api/v1/category/delete/6de3bd11-92bc-4b5f-8faf-2c0b64033b14
+Content-Type: application/json
+Accept-Language: EN
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiUk9MRV9BRE1JTixST0xFX1VTRVIiLCJpZCI6ImJhNzY1YjJiLTUzZWItNDEwZi1hOTJjLWNhNDUxNjgxYmFlMSIsInN1YiI6Im11emFmZmFybWlrZTJAZ21haWwuY29tIiwiaWF0IjoxNzQ5NjM0OTU3LCJleHAiOjE3NDk3MjEzNTd9.bxV1mJMQ9l-71o4fnocYBR5scUYuw9k9c1o4NwgUkKUo15JHuL5goWlIzty2Z04o3PZJfuyYI6NGP2ZZd6aUqg
+
+
+### GET ALL CATEGORIES
+GET localhost:8080/api/v1/category/
+Content-Type: application/json
+Accept-Language: EN
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiUk9MRV9BRE1JTixST0xFX1VTRVIiLCJpZCI6ImJhNzY1YjJiLTUzZWItNDEwZi1hOTJjLWNhNDUxNjgxYmFlMSIsInN1YiI6Im11emFmZmFybWlrZTJAZ21haWwuY29tIiwiaWF0IjoxNzQ5NjM0OTU3LCJleHAiOjE3NDk3MjEzNTd9.bxV1mJMQ9l-71o4fnocYBR5scUYuw9k9c1o4NwgUkKUo15JHuL5goWlIzty2Z04o3PZJfuyYI6NGP2ZZd6aUqg
+
+
+### GET ALL CATEGORIES BY LANGUAGE
+GET localhost:8080/api/v1/category/lang?lang=RU
+Content-Type: application/json
+Accept-Language: EN
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiUk9MRV9BRE1JTixST0xFX1VTRVIiLCJpZCI6ImJhNzY1YjJiLTUzZWItNDEwZi1hOTJjLWNhNDUxNjgxYmFlMSIsInN1YiI6Im11emFmZmFybWlrZTJAZ21haWwuY29tIiwiaWF0IjoxNzQ5NjM0OTU3LCJleHAiOjE3NDk3MjEzNTd9.bxV1mJMQ9l-71o4fnocYBR5scUYuw9k9c1o4NwgUkKUo15JHuL5goWlIzty2Z04o3PZJfuyYI6NGP2ZZd6aUqg

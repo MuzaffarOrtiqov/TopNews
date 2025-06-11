@@ -55,7 +55,7 @@ public class AuthController {
     }
 
     @PostMapping("/registration/sms-verification-resend")
-    @io.swagger.v3.oas.annotations.Operation(summary = "Registration SMS resend",description ="Method used to resend SMS for an unregistered user" )
+    @Operation(summary = "Registration SMS resend",description ="Method used to resend SMS for an unregistered user" )
     public ResponseEntity<AppResponse<String>> regVerificationSmsResend(@RequestBody SmsResendDTO dto,
                                                                         @RequestHeader(name = "Accept-Language", defaultValue = "UZ") AppLanguage lang) {
         log.info("Sms resend: username: {}", dto.getPhone());
@@ -63,7 +63,7 @@ public class AuthController {
 
     }
     @PostMapping("/login")
-    @io.swagger.v3.oas.annotations.Operation(summary = "Login",description ="Method used to log in to the website" )
+    @Operation(summary = "Login",description ="Method used to log in to the website" )
     public ResponseEntity<ProfileResponseDTO> login(@Valid @RequestBody AuthDTO authDTO,
                                                     @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage lang) {
         log.info("Login: username: {}", authDTO.getUsername());
@@ -71,7 +71,7 @@ public class AuthController {
     }
 
     @PostMapping("/password-reset")
-    @io.swagger.v3.oas.annotations.Operation(summary = "Reset Password",description ="Method used to reset the forgotten password" )
+    @Operation(summary = "Reset Password",description ="Method used to reset the forgotten password" )
     public ResponseEntity<AppResponse<String>> resetPassword(@Valid @RequestBody ResetPasswordDTO dto,
                                                              @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage lang) {
         log.info("Reset Password: username: {}", dto.getUsername());
@@ -79,7 +79,7 @@ public class AuthController {
     }
 
     @PostMapping("/password-reset-confirm")
-    @io.swagger.v3.oas.annotations.Operation(summary = "Password Reset Confirm",description ="Method used to confirm whether the new username belongs to him/her" )
+    @Operation(summary = "Password Reset Confirm",description ="Method used to confirm whether the new username belongs to him/her" )
     public ResponseEntity<AppResponse<String>> resetPasswordConfirm(@Valid @RequestBody ResetPasswordConfirmDTO dto,
                                                                     @RequestHeader(name = "Accept-Language", defaultValue = "UZ") AppLanguage lang) {
         log.info("Password Reset Confirm: username: {}", dto.getUsername());

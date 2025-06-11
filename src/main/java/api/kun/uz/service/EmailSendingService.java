@@ -1,21 +1,28 @@
 package api.kun.uz.service;
 
+import api.kun.uz.entity.EmailHistoryEntity;
 import api.kun.uz.enums.AppLanguage;
 import api.kun.uz.enums.EmailType;
+import api.kun.uz.exception.AppBadException;
+import api.kun.uz.repository.EmailHistoryRepository;
 import api.kun.uz.util.JwtUtil;
 import api.kun.uz.util.RandomUtil;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 import jakarta.validation.constraints.NotBlank;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
 @Service
+@Slf4j
 public class EmailSendingService {
     @Value("${spring.mail.username}")
     private String fromAccount;
@@ -28,6 +35,7 @@ public class EmailSendingService {
     @Autowired
     private ResourceBundleMessageService resourceBundleMessageService;
     private Long emailCount = 3l;
+
 
     public void sendMimeMessage(String email, String subject, String text) {
         MimeMessage msg = mailSender.createMimeMessage();
@@ -202,4 +210,80 @@ public class EmailSendingService {
         checkAndSendMimeEmail(username,subject,body,lang);
         emailHistoryService.createEmailHistory(username, subject, body, code, EmailType.RESET_PASSWORD);
     }
+
+    public void sendUsernameChangeConfirmEmail(String username, AppLanguage lang) {
+        String subject = "Username Change Confirmation";
+        String body = "<!DOCTYPE html>\n" +
+                "<html>\n" +
+                "<head>\n" +
+                "    <meta charset=\"UTF-8\">\n" +
+                "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n" +
+                "    <title>Password Reset Code</title>\n" +
+                "    <style>\n" +
+                "        body {\n" +
+                "            font-family: Arial, sans-serif;\n" +
+                "            background-color: #f4f4f4;\n" +
+                "            margin: 0;\n" +
+                "            padding: 0;\n" +
+                "        }\n" +
+                "        .container {\n" +
+                "            max-width: 600px;\n" +
+                "            margin: 40px auto;\n" +
+                "            background: #ffffff;\n" +
+                "            padding: 30px;\n" +
+                "            border-radius: 12px;\n" +
+                "            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);\n" +
+                "            text-align: center;\n" +
+                "        }\n" +
+                "        .header {\n" +
+                "            font-size: 24px;\n" +
+                "            font-weight: bold;\n" +
+                "            color: #333;\n" +
+                "            margin-bottom: 20px;\n" +
+                "        }\n" +
+                "        .content {\n" +
+                "            font-size: 16px;\n" +
+                "            color: #555;\n" +
+                "            line-height: 1.6;\n" +
+                "            margin-bottom: 20px;\n" +
+                "        }\n" +
+                "        .code-box {\n" +
+                "            font-size: 28px;\n" +
+                "            font-weight: bold;\n" +
+                "            color: #007bff;\n" +
+                "            background: #eef4ff;\n" +
+                "            padding: 15px;\n" +
+                "            display: inline-block;\n" +
+                "            border-radius: 8px;\n" +
+                "            letter-spacing: 5px;\n" +
+                "            margin: 10px 0;\n" +
+                "        }\n" +
+                "        .footer {\n" +
+                "            margin-top: 30px;\n" +
+                "            font-size: 14px;\n" +
+                "            color: #777;\n" +
+                "        }\n" +
+                "    </style>\n" +
+                "</head>\n" +
+                "<body>\n" +
+                "    <div class=\"container\">\n" +
+                "        <div class=\"header\">Reset Your Password</div>\n" +
+                "        <div class=\"content\">\n" +
+                "            <p>Hello,</p>\n" +
+                "            <p>You recently requested to change your username. Use the verification code below to proceed:</p>\n" +
+                "            <div class=\"code-box\">%s</div>\n" +
+                "            <p>This code is valid for 10 minutes.</p>\n" +
+                "            <p>If you did not request this, please ignore this email.</p>\n" +
+                "        </div>\n" +
+                "        <div class=\"footer\">&copy; 2025 Your Company Name. All rights reserved.</div>\n" +
+                "    </div>\n" +
+                "</body>\n" +
+                "</html>\n";
+        String code = RandomUtil.getRandomSmsCode();
+        body = String.format(body, code);
+        checkAndSendMimeEmail(username,subject,body,lang);
+        emailHistoryService.createEmailHistory(username, subject, body, code, EmailType.CHANGE_USERNAME);
+    }
+
+
 }

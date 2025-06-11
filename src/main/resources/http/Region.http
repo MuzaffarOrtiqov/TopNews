@@ -1,0 +1,47 @@
+### CREATE A REGION
+POST localhost:8080/api/v1/region/create
+Content-Type: application/json
+Accept-Language: EN
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiUk9MRV9BRE1JTixST0xFX1VTRVIiLCJpZCI6ImJhNzY1YjJiLTUzZWItNDEwZi1hOTJjLWNhNDUxNjgxYmFlMSIsInN1YiI6Im11emFmZmFybWlrZTJAZ21haWwuY29tIiwiaWF0IjoxNzQ5NjM0OTU3LCJleHAiOjE3NDk3MjEzNTd9.bxV1mJMQ9l-71o4fnocYBR5scUYuw9k9c1o4NwgUkKUo15JHuL5goWlIzty2Z04o3PZJfuyYI6NGP2ZZd6aUqg
+
+{
+  "orderNumber": 7,
+  "nameUz": "Fargona",
+  "nameRu": "Наманган",
+  "nameEn": "Namangan",
+  "key": "namangan"
+}
+
+### UPDATE A REGION
+PUT localhost:8080/api/v1/region/detail/794d0119-6338-49f0-b541-a24d3092ddbd
+Content-Type: application/json
+Accept-Language: EN
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiUk9MRV9BRE1JTixST0xFX1VTRVIiLCJpZCI6ImJhNzY1YjJiLTUzZWItNDEwZi1hOTJjLWNhNDUxNjgxYmFlMSIsInN1YiI6Im11emFmZmFybWlrZTJAZ21haWwuY29tIiwiaWF0IjoxNzQ5NjM0OTU3LCJleHAiOjE3NDk3MjEzNTd9.bxV1mJMQ9l-71o4fnocYBR5scUYuw9k9c1o4NwgUkKUo15JHuL5goWlIzty2Z04o3PZJfuyYI6NGP2ZZd6aUqg
+
+{
+  "orderNumber": 4,
+  "nameUz": "Namangan",
+  "nameRu": "Наманган",
+  "nameEn": "Namangan",
+  "key": "namangan"
+}
+
+### DELETE A REGION
+DELETE localhost:8080/api/v1/region/delete/820d60d0-183c-4a46-8260-d6f98afd5a90
+Content-Type: application/json
+Accept-Language: EN
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiUk9MRV9BRE1JTixST0xFX1VTRVIiLCJpZCI6ImJhNzY1YjJiLTUzZWItNDEwZi1hOTJjLWNhNDUxNjgxYmFlMSIsInN1YiI6Im11emFmZmFybWlrZTJAZ21haWwuY29tIiwiaWF0IjoxNzQ5NjM0OTU3LCJleHAiOjE3NDk3MjEzNTd9.bxV1mJMQ9l-71o4fnocYBR5scUYuw9k9c1o4NwgUkKUo15JHuL5goWlIzty2Z04o3PZJfuyYI6NGP2ZZd6aUqg
+
+
+### GET ALL REGIONS
+GET localhost:8080/api/v1/region/
+Content-Type: application/json
+Accept-Language: EN
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiUk9MRV9BRE1JTixST0xFX1VTRVIiLCJpZCI6ImJhNzY1YjJiLTUzZWItNDEwZi1hOTJjLWNhNDUxNjgxYmFlMSIsInN1YiI6Im11emFmZmFybWlrZTJAZ21haWwuY29tIiwiaWF0IjoxNzQ5NjM0OTU3LCJleHAiOjE3NDk3MjEzNTd9.bxV1mJMQ9l-71o4fnocYBR5scUYuw9k9c1o4NwgUkKUo15JHuL5goWlIzty2Z04o3PZJfuyYI6NGP2ZZd6aUqg
+
+
+### GET ALL REGIONS BY LANGUAGE
+GET localhost:8080/api/v1/region/lang?lang=RU
+Content-Type: application/json
+Accept-Language: EN
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiUk9MRV9BRE1JTixST0xFX1VTRVIiLCJpZCI6ImJhNzY1YjJiLTUzZWItNDEwZi1hOTJjLWNhNDUxNjgxYmFlMSIsInN1YiI6Im11emFmZmFybWlrZTJAZ21haWwuY29tIiwiaWF0IjoxNzQ5NjM0OTU3LCJleHAiOjE3NDk3MjEzNTd9.bxV1mJMQ9l-71o4fnocYBR5scUYuw9k9c1o4NwgUkKUo15JHuL5goWlIzty2Z04o3PZJfuyYI6NGP2ZZd6aUqg

@@ -130,5 +130,12 @@ public class SmsSendingService {
 
     }
 
+    public void sendUsernameChangeConfirmSms(String username, AppLanguage lang) {
+        String message = resourceBundleMessageService.getMessage("sms.change.username.code", lang);
+        String code = RandomUtil.getRandomSmsCode();
+        sendSms(username, message, code, SmsType.CHANGE_USERNAME);
+    }
 
+    public void check(String tempUsername, String code, AppLanguage lang) {
+    }
 }

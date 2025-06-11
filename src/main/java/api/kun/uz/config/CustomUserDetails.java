@@ -22,6 +22,7 @@ public class CustomUserDetails implements UserDetails {
     private Collection<? extends GrantedAuthority> authorities;
 
     public CustomUserDetails(ProfileEntity profile, List<ProfileRole> roleList) {
+        this.id = profile.getId();
         this.name = profile.getName();
         this.surname = profile.getName();
         this.username = profile.getUsername();

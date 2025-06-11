@@ -6,6 +6,8 @@ import api.kun.uz.repository.ProfileRoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ProfileRoleService {
     @Autowired
@@ -15,10 +17,10 @@ public class ProfileRoleService {
         profileRoleRepository.delete(profileId);
     }
 
-    public void create(String profileId, ProfileRole profileRole) {
+    public void create(String profileId, List<ProfileRole> profileRoles) {
         ProfileRoleEntity profileRoleEntity = new ProfileRoleEntity();
         profileRoleEntity.setProfileId(profileId);
-        profileRoleEntity.setRoles(profileRole);
+        profileRoles.forEach(profileRoleEntity::setRoles);
         profileRoleRepository.save(profileRoleEntity);
     }
 
