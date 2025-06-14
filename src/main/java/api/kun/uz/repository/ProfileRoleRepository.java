@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface ProfileRoleRepository extends JpaRepository<ProfileRoleEntity, String> {
     @Modifying
@@ -17,4 +18,7 @@ public interface ProfileRoleRepository extends JpaRepository<ProfileRoleEntity, 
 
     @Query("SELECT pr.roles from ProfileRoleEntity as pr WHERE pr.profileId=?1")
     List<ProfileRole> getRoles(String profileId);
+
+
+    List<ProfileRoleEntity> findProfileRoleByProfileId(String profileId);
 }

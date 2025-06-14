@@ -43,4 +43,10 @@ public class ProfileEntity {
 
     @Column(name = "created_date")
     private LocalDateTime createdDate = LocalDateTime.now();
+
+    @Column(name = "photo_id")
+    private String photoId;
+    @JoinColumn(name = "photo_id",insertable=false,updatable=false)
+    @ManyToOne(fetch = FetchType.LAZY)
+    private AttachEntity photo;
 }

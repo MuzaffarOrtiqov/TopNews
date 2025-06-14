@@ -1,0 +1,29 @@
+### Upload
+POST localhost:8080/api/v1/attach/upload
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiUk9MRV9BRE1JTixST0xFX1VTRVIiLCJpZCI6ImJhNzY1YjJiLTUzZWItNDEwZi1hOTJjLWNhNDUxNjgxYmFlMSIsInN1YiI6Im11emFmZmFybWlrZTJAZ21haWwuY29tIiwiaWF0IjoxNzQ5NzQxMTQ1LCJleHAiOjE3NDk4Mjc1NDV9.zLnZDiIqiUybOYcWYC5xdY9CXCwnQ9GPaEPXlF8TgsSlK4f1CjNhneonycZew2IQsaHIMgh6PutfZUsUFj9Obw
+
+--WebAppBoundary
+Content-Disposition: form-data; name="file"; filename="zari.jpg"
+
+< C:\Users\HP\Desktop\test\Images\zari.jpg
+
+### Open file
+GET localhost:8080/api/v1/attach/open/13afacfe-c2ca-457b-b9bf-a95a245b167b.jpg
+
+
+
+### DOWNLAOD FILE
+GET localhost:8080/api/v1/attach/download/13afacfe-c2ca-457b-b9bf-a95a245b167b.jpg
+
+### PAGINATION
+PUT localhost:8080/api/v1/attach/pagination?page=1&size=3
+Content-Type: application/json
+Accept-Language: UZ
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiUk9MRV9BRE1JTixST0xFX1VTRVIiLCJpZCI6ImJhNzY1YjJiLTUzZWItNDEwZi1hOTJjLWNhNDUxNjgxYmFlMSIsInN1YiI6Im11emFmZmFybWlrZTJAZ21haWwuY29tIiwiaWF0IjoxNzQ5NzQxMTQ1LCJleHAiOjE3NDk4Mjc1NDV9.zLnZDiIqiUybOYcWYC5xdY9CXCwnQ9GPaEPXlF8TgsSlK4f1CjNhneonycZew2IQsaHIMgh6PutfZUsUFj9Obw
+
+### DELETE A FILE
+DELETE localhost:8080/api/v1/attach/delete/13afacfe-c2ca-457b-b9bf-a95a245b167b.jpg
+Content-Type: application/json
+Accept-Language: UZ
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiUk9MRV9BRE1JTixST0xFX1VTRVIiLCJpZCI6ImJhNzY1YjJiLTUzZWItNDEwZi1hOTJjLWNhNDUxNjgxYmFlMSIsInN1YiI6Im11emFmZmFybWlrZTJAZ21haWwuY29tIiwiaWF0IjoxNzQ5NzQxMTQ1LCJleHAiOjE3NDk4Mjc1NDV9.zLnZDiIqiUybOYcWYC5xdY9CXCwnQ9GPaEPXlF8TgsSlK4f1CjNhneonycZew2IQsaHIMgh6PutfZUsUFj9Obw
