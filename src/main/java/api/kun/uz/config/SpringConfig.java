@@ -54,6 +54,9 @@ public class SpringConfig {
         http.authorizeHttpRequests(authorizationManagerRequestMatcherRegistry -> {
             authorizationManagerRequestMatcherRegistry
                     .requestMatchers(AUTH_WHITELIST).permitAll()
+                    .requestMatchers("api/v1/article/update/status/*").hasRole("PUBLISHER")
+                    .requestMatchers("/api/v1/article/private-publisher/filter").hasRole("PUBLISHER")
+                    .requestMatchers("/api/v1/article/private-moderator/filter").hasRole("MODERATOR")
                     .anyRequest()
                     .authenticated();
         }).addFilterBefore(jwtTokenFilter, UsernamePasswordAuthenticationFilter.class);

@@ -44,16 +44,16 @@ Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiUk9MRV9VU0VSIiwiaWQiOiIwY
 POST localhost:8080/api/v1/profile/create
 Content-Type: application/json
 Accept-Language: EN
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiUk9MRV9BRE1JTixST0xFX1VTRVIiLCJpZCI6ImJhNzY1YjJiLTUzZWItNDEwZi1hOTJjLWNhNDUxNjgxYmFlMSIsInN1YiI6Im11emFmZmFybWlrZTJAZ21haWwuY29tIiwiaWF0IjoxNzQ5NjM0OTU3LCJleHAiOjE3NDk3MjEzNTd9.bxV1mJMQ9l-71o4fnocYBR5scUYuw9k9c1o4NwgUkKUo15JHuL5goWlIzty2Z04o3PZJfuyYI6NGP2ZZd6aUqg
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiUk9MRV9BRE1JTixST0xFX1VTRVIiLCJpZCI6ImJhNzY1YjJiLTUzZWItNDEwZi1hOTJjLWNhNDUxNjgxYmFlMSIsInN1YiI6Im11emFmZmFybWlrZTJAZ21haWwuY29tIiwiaWF0IjoxNzUwMTc4NTI0LCJleHAiOjE3NTAyNjQ5MjR9.S19cddFxuNoEJRulTioYssk68j2F7OUS9MojwS2ZMf2rkp5obANPKhXMeiMhwvVFEK4HKcyNsUK2_Y8AsG3QnA
 
 {
   "name": "Samandar",
   "surname": "Nematullayev",
-  "username": "muzaffarortiqov19@gmail.com",
+  "username": "samandarr0127@gmail.com",
   "status": "ACTIVE",
   "password": "12345",
   "roleList": [
-    "ROLE_USER","ROLE_MODERATOR"
+    "ROLE_USER","ROLE_PUBLISHER"
   ]
 }
 

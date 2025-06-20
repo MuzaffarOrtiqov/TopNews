@@ -79,4 +79,12 @@ public class CategoryService {
         dto.setCreatedDate(categoryEntity.getCreatedDate());
         return dto;
     }
+    public CategoryInfoDTO getCategoryShortInfo (CategoryEntity categoryEntity){
+        CategoryInfoDTO dto = new CategoryInfoDTO();
+        dto.setId(categoryEntity.getId());
+        dto.setNameUz(categoryEntity.getNameUz());
+        dto.setNameRu(categoryEntity.getNameRu());
+        dto.setNameEn(categoryEntity.getNameEn());
+        return dto;
+    }
 }

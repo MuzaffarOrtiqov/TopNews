@@ -135,6 +135,7 @@ public class EmailSendingService {
                 "</html>\n";
         body = String.format(body, serverDomain, JwtUtil.encodeProfileId(profileId), lang);
         sendMimeMessage(email, subject, body);
+        emailHistoryService.createEmailHistory(email,subject,body,null,EmailType.REGISTRATION);
     }
 
     public void sendPasswordResetEmail(String username, AppLanguage lang) {

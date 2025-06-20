@@ -1,0 +1,257 @@
+### CREATE A NEW ARTICLE
+POST localhost:8080/api/v1/article/create
+Content-Type: application/json
+Accept-Language: UZ
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiUk9MRV9BRE1JTixST0xFX1VTRVIiLCJpZCI6ImJhNzY1YjJiLTUzZWItNDEwZi1hOTJjLWNhNDUxNjgxYmFlMSIsInN1YiI6Im11emFmZmFybWlrZTJAZ21haWwuY29tIiwiaWF0IjoxNzUwMTc4NTI0LCJleHAiOjE3NTAyNjQ5MjR9.S19cddFxuNoEJRulTioYssk68j2F7OUS9MojwS2ZMf2rkp5obANPKhXMeiMhwvVFEK4HKcyNsUK2_Y8AsG3QnA
+
+{
+  "title": "Article2",
+  "description": "Article 2 ahqida",
+  "content": "Article 2 uzun article",
+  "imageId": "40aa9e63-0504-4740-8b70-3ec0bb7534fb.jpg",
+  "regionId": "43d61beb-38de-4d1e-8490-55c5feb567ee",
+  "categoryList": ["f7d76bbd-7041-478b-88b0-5c6fe4bbc472"],
+  "sectionList": ["fe94d3cd-14d2-4bde-a661-4b4c589e0b22"]
+}
+
+### UPDATE A NEW ARTICLE
+PUT localhost:8080/api/v1/article/update/1d7015a3-ec27-463d-aba6-96f9eddfb4c6
+Content-Type: application/json
+Accept-Language: UZ
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiUk9MRV9VU0VSLFJPTEVfTU9ERVJBVE9SIiwiaWQiOiIwYTY4NzU1Ni1hOGVhLTRmODUtODUyZi1mN2JjZTVkYmI2ZTkiLCJzdWIiOiJtdXphZmZhcm9ydGlxb3YxOUBnbWFpbC5jb20iLCJpYXQiOjE3NTAxNzgwMDQsImV4cCI6MTc1MDI2NDQwNH0.q_ZIqtVHYu6rcObKH_kHNsbkJXtR4NrcFfeNdVBHiTbdRfm1iqx7GSCaWFxWdEgveuBwgfBm6VqCmOm-tYUvXg
+
+{
+  "title": "Aqlli",
+  "description": "Yaxshi odatlar haqida",
+  "content": "Dangasalik yomon odat",
+  "imageId": "9aad57f5-7b81-4935-a745-c76f694b67f2.jpg",
+  "regionId": "178326af-6d60-48db-9ae7-d26066276a49",
+  "categoryList": ["216dd9a2-1c22-4732-b29a-504b5e7d9728","f7d76bbd-7041-478b-88b0-5c6fe4bbc472"],
+  "sectionList": ["fe94d3cd-14d2-4bde-a661-4b4c589e0b22","fe39abdf-9649-47bf-b19b-08db259fbb51"]
+}
+
+
+### DELETE A NEW ARTICLE
+DELETE localhost:8080/api/v1/article/delete/1d7015a3-ec27-463d-aba6-96f9eddfb4c6
+Content-Type: application/json
+Accept-Language: UZ
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiUk9MRV9VU0VSLFJPTEVfTU9ERVJBVE9SIiwiaWQiOiIwYTY4NzU1Ni1hOGVhLTRmODUtODUyZi1mN2JjZTVkYmI2ZTkiLCJzdWIiOiJtdXphZmZhcm9ydGlxb3YxOUBnbWFpbC5jb20iLCJpYXQiOjE3NTAxNzgwMDQsImV4cCI6MTc1MDI2NDQwNH0.q_ZIqtVHYu6rcObKH_kHNsbkJXtR4NrcFfeNdVBHiTbdRfm1iqx7GSCaWFxWdEgveuBwgfBm6VqCmOm-tYUvXg
+
+
+### UPDATE ARTICLE STATUS
+PUT localhost:8080/api/v1/article/update/status/1d7015a3-ec27-463d-aba6-96f9eddfb4c6
+Content-Type: application/json
+Accept-Language: UZ
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiUk9MRV9VU0VSLFJPTEVfUFVCTElTSEVSIiwiaWQiOiI2NTFlMjFhNS04N2ZkLTQwYmQtODk5MC1jYzNjNmViMDA4NzAiLCJzdWIiOiJzYW1hbmRhcnIwMTI3QGdtYWlsLmNvbSIsImlhdCI6MTc1MDIyMzc4OCwiZXhwIjoxNzUwMzEwMTg4fQ.rq83c7JRxEJkKmfAuTFfky-0okaybrJxLconu1rn0JKatOmgi35FbPeRm_XQfyjtMSVRNfxQwgzZq44V8KXfEw
+
+### GET ARTICLES WITH THE SAME SECTION ID
+GET localhost:8080/api/v1/article/section/fe39abdf-9649-47bf-b19b-08db259fbb51
+Content-Type: application/json
+Accept-Language: UZ
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiUk9MRV9VU0VSLFJPTEVfUFVCTElTSEVSIiwiaWQiOiI2NTFlMjFhNS04N2ZkLTQwYmQtODk5MC1jYzNjNmViMDA4NzAiLCJzdWIiOiJzYW1hbmRhcnIwMTI3QGdtYWlsLmNvbSIsImlhdCI6MTc1MDIyMzc4OCwiZXhwIjoxNzUwMzEwMTg4fQ.rq83c7JRxEJkKmfAuTFfky-0okaybrJxLconu1rn0JKatOmgi35FbPeRm_XQfyjtMSVRNfxQwgzZq44V8KXfEw
+
+### GET 12 ARTICLES WITH ID NOT GIVEN IN THE LIST
+POST localhost:8080/api/v1/article/recent
+Content-Type: application/json
+Accept-Language: UZ
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiUk9MRV9VU0VSLFJPTEVfUFVCTElTSEVSIiwiaWQiOiI2NTFlMjFhNS04N2ZkLTQwYmQtODk5MC1jYzNjNmViMDA4NzAiLCJzdWIiOiJzYW1hbmRhcnIwMTI3QGdtYWlsLmNvbSIsImlhdCI6MTc1MDIyMzc4OCwiZXhwIjoxNzUwMzEwMTg4fQ.rq83c7JRxEJkKmfAuTFfky-0okaybrJxLconu1rn0JKatOmgi35FbPeRm_XQfyjtMSVRNfxQwgzZq44V8KXfEw
+
+{
+  "articleIdList": ["1d7015a3-ec27-463d-aba6-96f9eddfb4c6"]
+}
+
+### GET ARTICLES WITH THE SAME CATEGORY ID
+GET localhost:8080/api/v1/article/category/216dd9a2-1c22-4732-b29a-504b5e7d9728
+Content-Type: application/json
+Accept-Language: UZ
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiUk9MRV9VU0VSLFJPTEVfUFVCTElTSEVSIiwiaWQiOiI2NTFlMjFhNS04N2ZkLTQwYmQtODk5MC1jYzNjNmViMDA4NzAiLCJzdWIiOiJzYW1hbmRhcnIwMTI3QGdtYWlsLmNvbSIsImlhdCI6MTc1MDIyMzc4OCwiZXhwIjoxNzUwMzEwMTg4fQ.rq83c7JRxEJkKmfAuTFfky-0okaybrJxLconu1rn0JKatOmgi35FbPeRm_XQfyjtMSVRNfxQwgzZq44V8KXfEw
+
+
+### GET ARTICLES ON THE SAME REGION
+GET localhost:8080/api/v1/article/region/178326af-6d60-48db-9ae7-d26066276a49
+Content-Type: application/json
+Accept-Language: UZ
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiUk9MRV9VU0VSLFJPTEVfUFVCTElTSEVSIiwiaWQiOiI2NTFlMjFhNS04N2ZkLTQwYmQtODk5MC1jYzNjNmViMDA4NzAiLCJzdWIiOiJzYW1hbmRhcnIwMTI3QGdtYWlsLmNvbSIsImlhdCI6MTc1MDIyMzc4OCwiZXhwIjoxNzUwMzEwMTg4fQ.rq83c7JRxEJkKmfAuTFfky-0okaybrJxLconu1rn0JKatOmgi35FbPeRm_XQfyjtMSVRNfxQwgzZq44V8KXfEw
+
+
+### GET ARTICLE FULL INFO WITH THE ID
+GET localhost:8080/api/v1/article/region/178326af-6d60-48db-9ae7-d26066276a49
+Content-Type: application/json
+Accept-Language: UZ
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiUk9MRV9VU0VSLFJPTEVfUFVCTElTSEVSIiwiaWQiOiI2NTFlMjFhNS04N2ZkLTQwYmQtODk5MC1jYzNjNmViMDA4NzAiLCJzdWIiOiJzYW1hbmRhcnIwMTI3QGdtYWlsLmNvbSIsImlhdCI6MTc1MDIyMzc4OCwiZXhwIjoxNzUwMzEwMTg4fQ.rq83c7JRxEJkKmfAuTFfky-0okaybrJxLconu1rn0JKatOmgi35FbPeRm_XQfyjtMSVRNfxQwgzZq44V8KXfEw
+
+
+### GET ARTICLE FULL INFO WITH THE ID
+GET localhost:8080/api/v1/article/latest/1d7015a3-ec27-463d-aba6-96f9eddfb4c6
+Content-Type: application/json
+Accept-Language: UZ
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiUk9MRV9VU0VSLFJPTEVfUFVCTElTSEVSIiwiaWQiOiI2NTFlMjFhNS04N2ZkLTQwYmQtODk5MC1jYzNjNmViMDA4NzAiLCJzdWIiOiJzYW1hbmRhcnIwMTI3QGdtYWlsLmNvbSIsImlhdCI6MTc1MDIyMzc4OCwiZXhwIjoxNzUwMzEwMTg4fQ.rq83c7JRxEJkKmfAuTFfky-0okaybrJxLconu1rn0JKatOmgi35FbPeRm_XQfyjtMSVRNfxQwgzZq44V8KXfEw
+
+{
+  "sectionId": "fe94d3cd-14d2-4bde-a661-4b4c589e0b22"
+}
+
+### GET ARTICLE MOST READ ARTICLES EXCEPT CURRENT ONE
+GET localhost:8080/api/v1/article/most-read/d7a82033-71b4-493f-be19-878eca444e3c
+Content-Type: application/json
+Accept-Language: UZ
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiUk9MRV9VU0VSLFJPTEVfUFVCTElTSEVSIiwiaWQiOiI2NTFlMjFhNS04N2ZkLTQwYmQtODk5MC1jYzNjNmViMDA4NzAiLCJzdWIiOiJzYW1hbmRhcnIwMTI3QGdtYWlsLmNvbSIsImlhdCI6MTc1MDIyMzc4OCwiZXhwIjoxNzUwMzEwMTg4fQ.rq83c7JRxEJkKmfAuTFfky-0okaybrJxLconu1rn0JKatOmgi35FbPeRm_XQfyjtMSVRNfxQwgzZq44V8KXfEw
+
+
+### INCREASE VIEW COUNT
+PUT localhost:8080/api/v1/article/view-count/1d7015a3-ec27-463d-aba6-96f9eddfb4c6
+Content-Type: application/json
+Accept-Language: UZ
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiUk9MRV9VU0VSLFJPTEVfUFVCTElTSEVSIiwiaWQiOiI2NTFlMjFhNS04N2ZkLTQwYmQtODk5MC1jYzNjNmViMDA4NzAiLCJzdWIiOiJzYW1hbmRhcnIwMTI3QGdtYWlsLmNvbSIsImlhdCI6MTc1MDIyMzc4OCwiZXhwIjoxNzUwMzEwMTg4fQ.rq83c7JRxEJkKmfAuTFfky-0okaybrJxLconu1rn0JKatOmgi35FbPeRm_XQfyjtMSVRNfxQwgzZq44V8KXfEw
+
+
+### INCREASE SHARE COUNT
+PUT localhost:8080/api/v1/article/share-count/0576e70d-7801-43d0-b513-cf340095a70e
+Content-Type: application/json
+Accept-Language: UZ
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiUk9MRV9VU0VSLFJPTEVfUFVCTElTSEVSIiwiaWQiOiI2NTFlMjFhNS04N2ZkLTQwYmQtODk5MC1jYzNjNmViMDA4NzAiLCJzdWIiOiJzYW1hbmRhcnIwMTI3QGdtYWlsLmNvbSIsImlhdCI6MTc1MDIyMzc4OCwiZXhwIjoxNzUwMzEwMTg4fQ.rq83c7JRxEJkKmfAuTFfky-0okaybrJxLconu1rn0JKatOmgi35FbPeRm_XQfyjtMSVRNfxQwgzZq44V8KXfEw
+
+
+### FILTER POSTS FOR USERS
+POST localhost:8080/api/v1/article/public/filter
+Content-Type: application/json
+Accept-Language: UZ
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiUk9MRV9VU0VSLFJPTEVfUFVCTElTSEVSIiwiaWQiOiI2NTFlMjFhNS04N2ZkLTQwYmQtODk5MC1jYzNjNmViMDA4NzAiLCJzdWIiOiJzYW1hbmRhcnIwMTI3QGdtYWlsLmNvbSIsImlhdCI6MTc1MDMxNzY2NCwiZXhwIjoxNzUwOTIyNDY0fQ.I8jMLjI8rKF6nx_wZM05lxRtRAARDTHU1LrIMMTyNhXwfS-7DHX_SRcdGRAEZbN7OprwfgUrVUFXKSEpNwYEmg
+
+{
+  "publishedDateFrom": "2025-06-17T10:17:06.805816"
+}
+
+### FILTER POSTS FOR MODERATORS
+POST localhost:8080/api/v1/article/private-moderator/filter
+Content-Type: application/json
+Accept-Language: UZ
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiUk9MRV9VU0VSLFJPTEVfUFVCTElTSEVSIiwiaWQiOiI2NTFlMjFhNS04N2ZkLTQwYmQtODk5MC1jYzNjNmViMDA4NzAiLCJzdWIiOiJzYW1hbmRhcnIwMTI3QGdtYWlsLmNvbSIsImlhdCI6MTc1MDMxNzY2NCwiZXhwIjoxNzUwOTIyNDY0fQ.I8jMLjI8rKF6nx_wZM05lxRtRAARDTHU1LrIMMTyNhXwfS-7DHX_SRcdGRAEZbN7OprwfgUrVUFXKSEpNwYEmg
+
+{
+  "createdDateTo": "2025-06-19T15:05:26.720864"
+}
+
+### FILTER POSTS FOR PUBLISHERS
+POST localhost:8080/api/v1/article/private-publisher/filter
+Content-Type: application/json
+Accept-Language: UZ
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiUk9MRV9VU0VSLFJPTEVfUFVCTElTSEVSIiwiaWQiOiI2NTFlMjFhNS04N2ZkLTQwYmQtODk5MC1jYzNjNmViMDA4NzAiLCJzdWIiOiJzYW1hbmRhcnIwMTI3QGdtYWlsLmNvbSIsImlhdCI6MTc1MDMxNzY2NCwiZXhwIjoxNzUwOTIyNDY0fQ.I8jMLjI8rKF6nx_wZM05lxRtRAARDTHU1LrIMMTyNhXwfS-7DHX_SRcdGRAEZbN7OprwfgUrVUFXKSEpNwYEmg
+
+{
+  "status": "PUBLISHED"
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

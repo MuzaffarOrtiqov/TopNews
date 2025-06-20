@@ -80,4 +80,14 @@ public class RegionService {
         return dto;
     }
 
+    public RegionInfoDTO getRegionShortInfo(String regionId,AppLanguage lang) {
+         RegionEntity regionEntity = getRegionById(regionId,lang);
+         RegionInfoDTO dto = new RegionInfoDTO();
+         dto.setId(regionEntity.getId());
+         dto.setNameUz(regionEntity.getNameUz());
+         dto.setNameRu(regionEntity.getNameRu());
+         dto.setNameEn(regionEntity.getNameEn());
+         return dto;
+    }
+
 }

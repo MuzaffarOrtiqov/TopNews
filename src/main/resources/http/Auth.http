@@ -5,13 +5,13 @@ Accept-Language: EN
 
 {
   "name": "Muzaffar",
-  "username": "muzaffarmike2@gmail.com",
-  "password": "123456"
+  "username": "ortiqovmuzaffar171@gmail.com",
+  "password": "12345"
 }
 
 ### Registration Email  Verification
-GET localhost:8080/api/v1/auth/registration/email-verification/eyJhbGcOiJIUzUxMiJ9.eyJyb2xlIjoiUk9MRV9VU0VSIiwiaWQiOiJjY2QyN2IzZS1kYjJmLTQ5YzQtOGE0ZS0wZjZiYjdjNjA0MjQiLCJzdWIiOiJvcnRpcW92bXV6YWZmYXIxNzFAZ21haWwuY29tIiwiaWF0IjoxNzQxNzU1MTM1LCJleHAiOjE3NDE4NDE1MzV9.nT1jaoX5ZIFLBhcb22YHhn8oT8LSz-XKqkKAYEBBr5jJi4NnLN2xXRmp2fuezU8NK1Qfc5-WrtjXGmFL3asi3A?lang=RU
-Accept-Language: UZ
+GET localhost:8080/api/v1/auth/registration/email-verification/eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIwMDZkODhlMy1lMGZmLTRhZjAtYmUxZC1iZWY4YTJmYTczMmEiLCJpYXQiOjE3NDk4NzY5NTksImV4cCI6MTc0OTg4MDU1OX0.GMsCqNTLvRsSX4Tfc163XjXR2rrpel0aTOUayre6aJUUqiDjxYDvVxZ2FzQJkHERcoUj4VZzSEIjjDb7shG-ZA?lang=EN
+Accept-Language: EN
 
 ### Registration Sms Verification
 POST localhost:8080/api/v1/auth/registration/sms-verification
@@ -40,7 +40,7 @@ POST localhost:8080/api/v1/auth/login
 Content-Type: application/json
 
 {
-  "username": "muzaffarortiqov19@gmail.com",
+  "username": "samandarr0127@gmail.com",
   "password": "12345"
 }
 
