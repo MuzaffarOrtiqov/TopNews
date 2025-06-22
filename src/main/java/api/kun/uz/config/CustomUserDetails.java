@@ -8,6 +8,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -70,5 +71,11 @@ public class CustomUserDetails implements UserDetails {
 
     public String getId() {
         return id;
+    }
+
+    public List<ProfileRole> getRoleList() {
+        List<ProfileRole> roleList = new ArrayList<>();
+        authorities.forEach(item -> roleList.add(ProfileRole.valueOf(item.getAuthority())));
+        return roleList;
     }
 }

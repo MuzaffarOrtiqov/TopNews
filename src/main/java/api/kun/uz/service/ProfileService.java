@@ -205,7 +205,6 @@ public class ProfileService {
         return profileInfoDTO;
     }
 
-
     public AppResponse<String> updateProfilePhoto(ProfilePhotoUpdateDTO profileUpdateDTO, AppLanguage lang) {
         String userId = SpringSecurityUtil.getCurrentProfileId();
         ProfileEntity profileEntity = findProfileById(userId, lang);
@@ -221,5 +220,15 @@ public class ProfileService {
         }
         profileRepository.updateProfilePhoto(userId, profileUpdateDTO.getPhotoId());
         return new AppResponse<>(resourceBundleMessageService.getMessage("profile.photo.updated", lang));
+    }
+
+    public ProfileInfoDTO toProfileShortInfo(String profileId, AppLanguage lang) {
+        ProfileEntity profileEntity = findProfileById(profileId, lang);
+        ProfileInfoDTO profileInfoDTO = new ProfileInfoDTO();
+        profileInfoDTO.setId(profileId);
+        profileInfoDTO.setName(profileEntity.getName());
+        profileInfoDTO.setSurname(profileEntity.getSurname());
+        profileInfoDTO.setImage(attachService.attachShortInfo(profileEntity.getPhotoId()));
+        return profileInfoDTO;
     }
 }

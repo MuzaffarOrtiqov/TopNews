@@ -10,7 +10,6 @@ import api.kun.uz.exception.AppBadException;
 import api.kun.uz.repository.ArticleRepository;
 import api.kun.uz.repository.CustomArticleFilterRepository;
 import api.kun.uz.util.SpringSecurityUtil;
-import org.apache.catalina.security.SecurityUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
@@ -51,7 +50,7 @@ public class ArticleService {
     }
 
     public ArticleInfoDTO updateArticle(String articleId, ArticleCreateUpdateDTO articleCreateUpdateDTO, AppLanguage lang) {
-        ArticleEntity articleEntity = getArticleEntityById(articleId, lang);
+        ArticleEntity articleEntity = getArticleById(articleId, lang);
         articleEntity.setTitle(articleCreateUpdateDTO.getTitle());
         articleEntity.setDescription(articleCreateUpdateDTO.getDescription());
         articleEntity.setContent(articleCreateUpdateDTO.getContent());
@@ -73,13 +72,13 @@ public class ArticleService {
     }
 
     public AppResponse<String> deleteArticle(String articleId, AppLanguage lang) {
-        ArticleEntity articleEntity = getArticleEntityById(articleId, lang);
+        ArticleEntity articleEntity = getArticleById(articleId, lang);
         articleRepository.deleteArticle(articleId);
         return new AppResponse<>(resourceBundleMessageService.getMessage("article.delete.success", lang));
     }
 
     public AppResponse<String> updateArticleStatus(String articleId, AppLanguage lang) {
-        ArticleEntity articleEntity = getArticleEntityById(articleId, lang);
+        ArticleEntity articleEntity = getArticleById(articleId, lang);
         //get Publisher id
         articleEntity.setPublisherId(SpringSecurityUtil.getCurrentProfileId());
         if (articleEntity.getStatus().equals(ArticleStatus.NOT_PUBLISHED)) {
@@ -128,7 +127,7 @@ public class ArticleService {
     }
 
     public ArticleFullInfoDTO getArticleFullInfo(String articleId, AppLanguage lang) {
-        ArticleEntity articleEntity = getArticleEntityById(articleId, lang);
+        ArticleEntity articleEntity = getArticleById(articleId, lang);
         return toArticleFullInfoDTO(articleEntity, lang);
     }
 
@@ -144,13 +143,13 @@ public class ArticleService {
     }
 
     public AppResponse<String> incrementViewCount(String articleId, AppLanguage lang) {
-        ArticleEntity articleEntity = getArticleEntityById(articleId, lang);
+        ArticleEntity articleEntity = getArticleById(articleId, lang);
         Integer changedLines = articleRepository.incrementViewCount(articleId);
         return new AppResponse<>(changedLines == 1 ? resourceBundleMessageService.getMessage("view.count.increased", lang) : resourceBundleMessageService.getMessage("view.count.not.changed", lang));
     }
 
     public AppResponse<String> incrementShareCount(String articleId, AppLanguage lang) {
-        ArticleEntity articleEntity = getArticleEntityById(articleId, lang);
+        ArticleEntity articleEntity = getArticleById(articleId, lang);
         Integer changedLines = articleRepository.incrementShareCount(articleId);
         return new AppResponse<>(changedLines == 1 ? resourceBundleMessageService.getMessage("share.count.increased", lang) : resourceBundleMessageService.getMessage("share.count.not.changed", lang));
     }
@@ -167,7 +166,7 @@ public class ArticleService {
 
     public Page<ArticleShortInfo> filterArticlesForModerators(Integer page, Integer size, ArticleFilterModeratorDTO articleFilterModeratorDTO, AppLanguage lang) {
         String moderatorId = SpringSecurityUtil.getCurrentProfileId();
-        FilterResultDTO<Object[]> result = customArticleFilterRepository.filterArticlesForModerators(page, size, articleFilterModeratorDTO,moderatorId);
+        FilterResultDTO<Object[]> result = customArticleFilterRepository.filterArticlesForModerators(page, size, articleFilterModeratorDTO, moderatorId);
         List<ArticleShortInfo> articleShortInfoList = result
                 .getList()
                 .stream()
@@ -228,13 +227,6 @@ public class ArticleService {
         return articleShortInfo;
     }
 
-    private ArticleEntity getArticleEntityById(String articleId, AppLanguage lang) {
-        return articleRepository
-                .findById(articleId)
-                .orElseThrow(() -> new AppBadException(resourceBundleMessageService.getMessage("article.not.found", lang)));
-
-    }
-
     private ArticleShortInfo toShortInfoDTO(Object[] obj) {
         ArticleShortInfo articleShortInfo = new ArticleShortInfo();
         articleShortInfo.setArticleId(obj[0].toString());
@@ -245,6 +237,31 @@ public class ArticleService {
         return articleShortInfo;
     }
 
+    public ArticleShortInfo toShortInfoDTO(String articleId, AppLanguage lang) {
+        ArticleEntity articleEntity = getArticleById(articleId, lang);
+        ArticleShortInfo articleShortInfo = new ArticleShortInfo();
+        articleShortInfo.setArticleId(articleId);
+        articleShortInfo.setTitle(articleEntity.getTitle());
+        return articleShortInfo;
+    }
+
+    public ArticleShortInfo toDetailedInfo (String articleId, AppLanguage lang) {
+        ArticleEntity articleEntity = getArticleById(articleId, lang);
+        ArticleShortInfo articleShortInfo = new ArticleShortInfo();
+        articleShortInfo.setArticleId(articleId);
+        articleShortInfo.setTitle(articleEntity.getTitle());
+        articleShortInfo.setDescription(articleEntity.getDescription());
+        articleShortInfo.setImage(attachService.attachShortInfo(articleEntity.getImageId()));
+        return articleShortInfo;
+    }
+
+
+    private ArticleEntity getArticleById(String articleId, AppLanguage lang) {
+        return articleRepository
+                .findById(articleId)
+                .orElseThrow(() -> new AppBadException(resourceBundleMessageService.getMessage("article.not.found", lang)));
+
+    }
 
 
 }

@@ -1,0 +1,24 @@
+### CREATE A REGION
+POST localhost:8080/api/v1/saved-article/create
+Content-Type: application/json
+Accept-Language: EN
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiUk9MRV9VU0VSLFJPTEVfUFVCTElTSEVSIiwiaWQiOiI2NTFlMjFhNS04N2ZkLTQwYmQtODk5MC1jYzNjNmViMDA4NzAiLCJzdWIiOiJzYW1hbmRhcnIwMTI3QGdtYWlsLmNvbSIsImlhdCI6MTc1MDMxNzY2NCwiZXhwIjoxNzUwOTIyNDY0fQ.I8jMLjI8rKF6nx_wZM05lxRtRAARDTHU1LrIMMTyNhXwfS-7DHX_SRcdGRAEZbN7OprwfgUrVUFXKSEpNwYEmg
+
+{
+  "articleId": "1d7015a3-ec27-463d-aba6-96f9eddfb4c6"
+}
+
+### DELETE A SAVED ARTICLE
+DELETE localhost:8080/api/v1/saved-article/delete/f35be606-ead7-4ea7-8da2-5c333d42905f
+Content-Type: application/json
+Accept-Language: EN
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiUk9MRV9VU0VSLFJPTEVfUFVCTElTSEVSIiwiaWQiOiI2NTFlMjFhNS04N2ZkLTQwYmQtODk5MC1jYzNjNmViMDA4NzAiLCJzdWIiOiJzYW1hbmRhcnIwMTI3QGdtYWlsLmNvbSIsImlhdCI6MTc1MDMxNzY2NCwiZXhwIjoxNzUwOTIyNDY0fQ.I8jMLjI8rKF6nx_wZM05lxRtRAARDTHU1LrIMMTyNhXwfS-7DHX_SRcdGRAEZbN7OprwfgUrVUFXKSEpNwYEmg
+
+
+### GET ALL SAVED ARTICLES OF A PROFILE
+GET localhost:8080/api/v1/saved-article/
+Content-Type: application/json
+Accept-Language: EN
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiUk9MRV9VU0VSLFJPTEVfUFVCTElTSEVSIiwiaWQiOiI2NTFlMjFhNS04N2ZkLTQwYmQtODk5MC1jYzNjNmViMDA4NzAiLCJzdWIiOiJzYW1hbmRhcnIwMTI3QGdtYWlsLmNvbSIsImlhdCI6MTc1MDMxNzY2NCwiZXhwIjoxNzUwOTIyNDY0fQ.I8jMLjI8rKF6nx_wZM05lxRtRAARDTHU1LrIMMTyNhXwfS-7DHX_SRcdGRAEZbN7OprwfgUrVUFXKSEpNwYEmg
+
+
