@@ -32,6 +32,8 @@ public class CommentService {
     private ArticleService articleService;
     @Autowired
     private CustomCommentFilterRepository commentFilterRepository;
+    @Autowired
+    private TelegramNotificationService  telegramNotificationService;
 
 
     public AppResponse<String> createComment(CommentCreateDTO commentCreateDTO, AppLanguage lang) {
@@ -41,6 +43,7 @@ public class CommentService {
         commentEntity.setReplyId(commentCreateDTO.getReplyId());
         commentEntity.setProfileId(SpringSecurityUtil.getCurrentProfileId());
         commentRepository.save(commentEntity);
+        telegramNotificationService.sendCommentToGroup(articleService.getArticleById(commentEntity.getArticleId(),lang).getTitle(), SpringSecurityUtil.getCurrentProfile().getUsername(),commentEntity.getContent());
         return new AppResponse<>(resourceBundleMessageService.getMessage("comment.create.success", lang));
     }
 

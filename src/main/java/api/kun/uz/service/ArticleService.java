@@ -267,8 +267,7 @@ public class ArticleService {
         return articleShortInfo;
     }
 
-
-    private ArticleEntity getArticleById(String articleId, AppLanguage lang) {
+    public ArticleEntity getArticleById(String articleId, AppLanguage lang) {
         return articleRepository
                 .findById(articleId)
                 .orElseThrow(() -> new AppBadException(resourceBundleMessageService.getMessage("article.not.found", lang)));
