@@ -25,6 +25,7 @@ public class ArticleCreateUpdateDTO {
     @NotNull(message = "SectionIds are required")
     private List<String> sectionList;
     private Integer readTime;
+    private List<String> tagNameList;
 
 
 }

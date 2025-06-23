@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/category/")
+@RequestMapping("/api/v1/category")
 @Tag(name = "CategoryController", description = "A set of APIs to work with category")
 @Slf4j
 public class CategoryController {
@@ -28,7 +28,6 @@ public class CategoryController {
     private CategoryService categoryService;
 
     @PostMapping("/create")
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @Operation(summary = "Add new category", description = "Method used to create new category")
     public ResponseEntity<AppResponse<String>> createCategory(@Valid @RequestBody CategoryCreateDTO categoryCreateDTO,
                                                               @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage lang) {
@@ -39,7 +38,6 @@ public class CategoryController {
     }
 
     @PutMapping("/detail/{categoryId}")
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @Operation(summary = "Update a category", description = "Method used to update an existing category")
     public ResponseEntity<AppResponse<String>> updateCategory(@PathVariable String categoryId,
                                                               @Valid @RequestBody CategoryUpdateDTO categoryUpdateDTO,
@@ -50,7 +48,6 @@ public class CategoryController {
     }
 
     @DeleteMapping("/delete/{categoryId}")
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @Operation(summary = "Delete a region", description = "Method used to delete an existing region")
     public ResponseEntity<AppResponse<String>> deleteCategory(@PathVariable(name = "categoryId") String categoryId,
                                                               @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage lang) {
@@ -60,8 +57,7 @@ public class CategoryController {
         return ResponseEntity.ok(response);
     }
 
-    @GetMapping("/")
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @GetMapping("/all")
     @Operation(summary = "Get all categories", description = "Method used to receive all existing categories")
     public ResponseEntity<List<CategoryInfoDTO>> getCategories(@RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage lang) {
 
@@ -70,7 +66,6 @@ public class CategoryController {
     }
 
     @GetMapping("/lang")
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @Operation(summary = "Get all categories", description = "Method used to receive all existing categories")
     public ResponseEntity<List<CategoryShortInfoMapper>> getCategoriesByLang(@RequestParam(name = "lang") AppLanguage language) {
 

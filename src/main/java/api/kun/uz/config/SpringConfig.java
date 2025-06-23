@@ -38,6 +38,33 @@ public class SpringConfig {
             "/v3/api-docs/**"
     };
 
+    public static final String[] AUTH_MODERATOR = {
+            "/api/v1/article/private-moderator/filter",
+            "/api/v1/article/create",
+            "/api/v1/article/update/*",
+            "/api/v1/article/delete/*",
+    };
+
+    public static final String[] AUTH_PUBLISHER = {
+            "api/v1/article/update/status/*",
+            "/api/v1/article/private-publisher/filter",
+
+    };
+    public static final String[] AUTH_ADMIN = {
+            "/api/v1/attach/pagination",
+            "/api/v1/attach//delete/*",
+            "/api/v1/category/**",
+            "/api/v1/comment/",
+            "/api/v1/comment/filter",
+            "/api/v1/email-history/admin",
+            "/api/v1/profile/admin/**",
+            "/api/v1/region/**",
+            "/api/v1/section/**",
+            "/api/v1/sms-history/admin",
+            "/api/v1/tag/all",
+
+    };
+
     @Bean
     public AuthenticationProvider authenticationProvider() {
         // authentication (login,password)
@@ -54,9 +81,9 @@ public class SpringConfig {
         http.authorizeHttpRequests(authorizationManagerRequestMatcherRegistry -> {
             authorizationManagerRequestMatcherRegistry
                     .requestMatchers(AUTH_WHITELIST).permitAll()
-                    .requestMatchers("api/v1/article/update/status/*").hasRole("PUBLISHER")
-                    .requestMatchers("/api/v1/article/private-publisher/filter").hasRole("PUBLISHER")
-                    .requestMatchers("/api/v1/article/private-moderator/filter").hasRole("MODERATOR")
+                    .requestMatchers(AUTH_PUBLISHER).hasRole("PUBLISHER")
+                    .requestMatchers(AUTH_MODERATOR).hasRole("MODERATOR")
+                    .requestMatchers(AUTH_ADMIN).hasRole("ADMIN")
                     .anyRequest()
                     .authenticated();
         }).addFilterBefore(jwtTokenFilter, UsernamePasswordAuthenticationFilter.class);

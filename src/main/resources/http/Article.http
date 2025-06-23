@@ -2,16 +2,17 @@
 POST localhost:8080/api/v1/article/create
 Content-Type: application/json
 Accept-Language: UZ
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiUk9MRV9BRE1JTixST0xFX1VTRVIiLCJpZCI6ImJhNzY1YjJiLTUzZWItNDEwZi1hOTJjLWNhNDUxNjgxYmFlMSIsInN1YiI6Im11emFmZmFybWlrZTJAZ21haWwuY29tIiwiaWF0IjoxNzUwMTc4NTI0LCJleHAiOjE3NTAyNjQ5MjR9.S19cddFxuNoEJRulTioYssk68j2F7OUS9MojwS2ZMf2rkp5obANPKhXMeiMhwvVFEK4HKcyNsUK2_Y8AsG3QnA
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiUk9MRV9VU0VSLFJPTEVfUFVCTElTSEVSIiwiaWQiOiI2NTFlMjFhNS04N2ZkLTQwYmQtODk5MC1jYzNjNmViMDA4NzAiLCJzdWIiOiJzYW1hbmRhcnIwMTI3QGdtYWlsLmNvbSIsImlhdCI6MTc1MDMxNzY2NCwiZXhwIjoxNzUwOTIyNDY0fQ.I8jMLjI8rKF6nx_wZM05lxRtRAARDTHU1LrIMMTyNhXwfS-7DHX_SRcdGRAEZbN7OprwfgUrVUFXKSEpNwYEmg
 
 {
-  "title": "Article2",
-  "description": "Article 2 ahqida",
-  "content": "Article 2 uzun article",
+  "title": "Article6",
+  "description": "Article 6 haqida",
+  "content": "Article 6 uzun article",
   "imageId": "40aa9e63-0504-4740-8b70-3ec0bb7534fb.jpg",
   "regionId": "43d61beb-38de-4d1e-8490-55c5feb567ee",
   "categoryList": ["f7d76bbd-7041-478b-88b0-5c6fe4bbc472"],
-  "sectionList": ["fe94d3cd-14d2-4bde-a661-4b4c589e0b22"]
+  "sectionList": ["fe94d3cd-14d2-4bde-a661-4b4c589e0b22"],
+  "tagNameList": ["#jinni", "#news", "#mazgi" ]
 }
 
 ### UPDATE A NEW ARTICLE
@@ -79,6 +80,13 @@ GET localhost:8080/api/v1/article/region/178326af-6d60-48db-9ae7-d26066276a49
 Content-Type: application/json
 Accept-Language: UZ
 Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiUk9MRV9VU0VSLFJPTEVfUFVCTElTSEVSIiwiaWQiOiI2NTFlMjFhNS04N2ZkLTQwYmQtODk5MC1jYzNjNmViMDA4NzAiLCJzdWIiOiJzYW1hbmRhcnIwMTI3QGdtYWlsLmNvbSIsImlhdCI6MTc1MDIyMzc4OCwiZXhwIjoxNzUwMzEwMTg4fQ.rq83c7JRxEJkKmfAuTFfky-0okaybrJxLconu1rn0JKatOmgi35FbPeRm_XQfyjtMSVRNfxQwgzZq44V8KXfEw
+
+### GET ARTICLES BY TAG NAME
+GET localhost:8080/api/v1/article/tag?tagName=#news
+Content-Type: application/json
+Accept-Language: UZ
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiUk9MRV9VU0VSLFJPTEVfUFVCTElTSEVSIiwiaWQiOiI2NTFlMjFhNS04N2ZkLTQwYmQtODk5MC1jYzNjNmViMDA4NzAiLCJzdWIiOiJzYW1hbmRhcnIwMTI3QGdtYWlsLmNvbSIsImlhdCI6MTc1MDMxNzY2NCwiZXhwIjoxNzUwOTIyNDY0fQ.I8jMLjI8rKF6nx_wZM05lxRtRAARDTHU1LrIMMTyNhXwfS-7DHX_SRcdGRAEZbN7OprwfgUrVUFXKSEpNwYEmg
+
 
 
 ### GET ARTICLE FULL INFO WITH THE ID

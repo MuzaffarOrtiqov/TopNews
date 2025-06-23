@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/region/")
+@RequestMapping("/api/v1/region")
 @Tag(name = "RegionController", description = "A set of APIs to work with region")
 @Slf4j
 public class RegionController {
@@ -27,7 +27,6 @@ public class RegionController {
     private RegionService regionService;
 
     @PostMapping("/create")
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @Operation(summary = "Add new region", description = "Method used to create new region")
     public ResponseEntity<AppResponse<String>> createRegion(@Valid @RequestBody RegionCreateDTO regionCreateDTO,
                                                             @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage lang) {
@@ -38,7 +37,6 @@ public class RegionController {
     }
 
     @PutMapping("/detail/{regionId}")
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @Operation(summary = "Update a region", description = "Method used to update an existing region")
     public ResponseEntity<AppResponse<String>> updateRegion(@PathVariable String regionId,
                                                             @Valid @RequestBody RegionUpdateDTO regionUpdateDTO,
@@ -49,7 +47,6 @@ public class RegionController {
     }
 
     @DeleteMapping("/delete/{regionId}")
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @Operation(summary = "Delete a region", description = "Method used to delete an existing region")
     public ResponseEntity<AppResponse<String>> deleteRegion(@PathVariable(name = "regionId") String regionId,
                                                             @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage lang) {
@@ -59,8 +56,7 @@ public class RegionController {
         return ResponseEntity.ok(response);
     }
 
-    @GetMapping("/")
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @GetMapping("/all")
     @Operation(summary = "Get all regions", description = "Method used to receive all existing regions")
     public ResponseEntity<List<RegionInfoDTO>> getRegions(@RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage lang) {
 
@@ -69,7 +65,6 @@ public class RegionController {
     }
 
     @GetMapping("/lang")
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @Operation(summary = "Get all regions", description = "Method used to receive all existing regions")
     public ResponseEntity<List<RegionShortInfoMapper>> getRegionsByLang(@RequestParam(name = "lang") AppLanguage language) {
 

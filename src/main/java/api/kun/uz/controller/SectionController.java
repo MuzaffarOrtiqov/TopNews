@@ -28,7 +28,6 @@ public class SectionController {
     private SectionService sectionService;
 
     @PostMapping("/create")
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @Operation(summary = "Add new section", description = "Method used to create new section")
     public ResponseEntity<AppResponse<String>> createSection(@Valid @RequestBody SectionCreateDTO sectionCreateDTO,
                                                             @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage lang) {
@@ -39,7 +38,6 @@ public class SectionController {
     }
 
     @PutMapping("/detail/{sectionId}")
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @Operation(summary = "Update a section", description = "Method used to update an existing section")
     public ResponseEntity<AppResponse<String>> updateSection(@PathVariable String sectionId,
                                                             @Valid @RequestBody SectionUpdateDTO sectionUpdateDTO,
@@ -50,7 +48,6 @@ public class SectionController {
     }
 
     @DeleteMapping("/delete/{sectionId}")
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @Operation(summary = "Delete a section", description = "Method used to delete an existing section")
     public ResponseEntity<AppResponse<String>> deleteSection(@PathVariable(name = "sectionId") String sectionId,
                                                             @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage lang) {
@@ -60,8 +57,7 @@ public class SectionController {
         return ResponseEntity.ok(response);
     }
 
-    @GetMapping("/")
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @GetMapping("/all")
     @Operation(summary = "Get all sections", description = "Method used to receive all existing sections")
     public ResponseEntity<List<SectionInfoDTO>> getSections(@RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage lang) {
 
@@ -70,7 +66,6 @@ public class SectionController {
     }
 
     @GetMapping("/lang")
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @Operation(summary = "Get all sections", description = "Method used to receive all existing sections")
     public ResponseEntity<List<SectionShortInfoMapper>> getSectionsByLang(@RequestParam(name = "lang") AppLanguage language) {
 

@@ -47,7 +47,6 @@ public class AttachController {
     }
 
     @PutMapping("/pagination")
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @Operation(summary = "Pagination", description = "Method used to get all attaches in paginated form")
     public ResponseEntity<Page<AttachDTO>> pagination(@RequestParam(name = "page") Integer page,
                                                       @RequestParam(name = "size") Integer size,
@@ -58,7 +57,6 @@ public class AttachController {
     }
 
     @DeleteMapping("/delete/{fileId}")
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @Operation(summary = "Delete Attach", description = "Method used to get delete a particular attach")
     public ResponseEntity<AppResponse<String>> deleteAttach(@PathVariable(name = "fileId") String fileId,
                                                         @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage lang) {

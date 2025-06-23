@@ -4,6 +4,7 @@ import api.kun.uz.dto.AppResponse;
 import api.kun.uz.dto.FilterResultDTO;
 import api.kun.uz.dto.article.*;
 import api.kun.uz.entity.ArticleEntity;
+import api.kun.uz.entity.ArticleTagEntity;
 import api.kun.uz.enums.AppLanguage;
 import api.kun.uz.enums.ArticleStatus;
 import api.kun.uz.exception.AppBadException;
@@ -33,8 +34,11 @@ public class ArticleService {
     private ResourceBundleMessageService resourceBundleMessageService;
     @Autowired
     private CustomArticleFilterRepository customArticleFilterRepository;
+    @Autowired
+    private ArticleTagService articleTagService;
 
     public ArticleInfoDTO createArticle(ArticleCreateUpdateDTO articleCreateUpdateDTO, AppLanguage lang) {
+        String profileId = SpringSecurityUtil.getCurrentProfileId();
         ArticleEntity articleEntity = new ArticleEntity();
         articleEntity.setTitle(articleCreateUpdateDTO.getTitle());
         articleEntity.setDescription(articleCreateUpdateDTO.getDescription());
@@ -42,10 +46,11 @@ public class ArticleService {
         articleEntity.setImageId(articleCreateUpdateDTO.getImageId());
         articleEntity.setRegionId(articleCreateUpdateDTO.getRegionId());
         articleEntity.setReadTime(articleCreateUpdateDTO.getReadTime());
-        articleEntity.setModeratorId(SpringSecurityUtil.getCurrentProfileId());
+        articleEntity.setModeratorId(profileId);
         articleRepository.save(articleEntity);
         articleCategoryService.setArticleCategory(articleEntity.getId(), articleCreateUpdateDTO.getCategoryList(), lang);
         articleSectionService.setArticleSection(articleEntity.getId(), articleCreateUpdateDTO.getSectionList(), lang);
+        articleTagService.setArticleTag(articleEntity.getId(), articleCreateUpdateDTO.getTagNameList(), profileId, lang);
         return toArticleInfoDTO(articleEntity, lang);
     }
 
@@ -131,11 +136,18 @@ public class ArticleService {
         return toArticleFullInfoDTO(articleEntity, lang);
     }
 
+    public List<ArticleShortInfo> getArticlesByTagName(String tagName, AppLanguage lang) {
+        List<ArticleTagEntity> articleTagEntityList = articleTagService.getArticlesByTagName(tagName, lang);
+        List<ArticleEntity> articleEntityList = articleTagEntityList.stream().map(articleTagEntity -> getArticleById(articleTagEntity.getArticleId(), lang)).toList();
+        return articleEntityList.stream().map(articleEntity -> toShortInfoDTO(articleEntity, lang)).toList();
+    }
+
     public List<ArticleShortInfo> getLatest4ArticleOnSameSectionExcludingArticleId(String articleId, ArticleRequestSectionDTO dto, AppLanguage lang) {
         Pageable pageable = PageRequest.of(0, 4);
         List<ArticleEntity> articleEntityList = articleRepository.getLatest4ArticleOnSameSectionExcludingArticleId(articleId, dto.getSectionId(), pageable);
         return articleEntityList.stream().map(articleEntity -> toShortInfoDTO(articleEntity, lang)).toList();
     }
+
 
     public List<ArticleShortInfo> getMostReadFourArticlesExcludingCurrentArticle(String articleId, AppLanguage lang) {
         List<ArticleEntity> articleEntityList = articleRepository.getMostReadFourArticlesExcludingCurrentArticle(articleId);
@@ -245,7 +257,7 @@ public class ArticleService {
         return articleShortInfo;
     }
 
-    public ArticleShortInfo toDetailedInfo (String articleId, AppLanguage lang) {
+    public ArticleShortInfo toDetailedInfo(String articleId, AppLanguage lang) {
         ArticleEntity articleEntity = getArticleById(articleId, lang);
         ArticleShortInfo articleShortInfo = new ArticleShortInfo();
         articleShortInfo.setArticleId(articleId);

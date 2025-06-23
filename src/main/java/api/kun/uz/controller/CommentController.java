@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/comment/")
+@RequestMapping("/api/v1/comment")
 @Tag(name = "CommentController", description = "A set of APIs to work with comment")
 @Slf4j
 public class CommentController {
@@ -68,7 +68,6 @@ public class CommentController {
     }
 
     @GetMapping("/")
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @Operation(summary = "Get all comments ", description = "Method used to get all comments by admin")
     public ResponseEntity<Page<CommentResponseDto>> getComments(@RequestParam(name = "page", defaultValue = "1") Integer page,
                                                                 @RequestParam(name = "size", defaultValue = "5") Integer size,
@@ -79,7 +78,6 @@ public class CommentController {
     }
 
     @PostMapping("/filter")
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @Operation(summary = "Filter comments ", description = "Method used to filter comments by admin")
     public ResponseEntity<Page<CommentResponseDto>> filter(@RequestParam(name = "page", defaultValue = "1") Integer page,
                                                            @RequestParam(name = "size", defaultValue = "5") Integer size,

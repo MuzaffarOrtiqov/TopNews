@@ -26,7 +26,6 @@ public class ArticleController {
     private ArticleService articleService;
 
     @PostMapping("/create")
-    @PreAuthorize("hasRole('ROLE_MODERATOR')")
     @Operation(summary = "Add new article", description = "Method used to create new article")
     public ResponseEntity<ArticleInfoDTO> createArticle(@Valid @RequestBody ArticleCreateUpdateDTO articleCreateUpdateDTO,
                                                         @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage lang) {
@@ -37,7 +36,6 @@ public class ArticleController {
     }
 
     @PutMapping("/update/{articleId}")
-    @PreAuthorize("hasRole('ROLE_MODERATOR')")
     @Operation(summary = "Update an article", description = "Method used to update an article")
     public ResponseEntity<ArticleInfoDTO> updateArticle(@PathVariable(name = "articleId") String articleId,
                                                         @Valid @RequestBody ArticleCreateUpdateDTO articleCreateUpdateDTO,
@@ -49,7 +47,6 @@ public class ArticleController {
     }
 
     @DeleteMapping("/delete/{articleId}")
-    @PreAuthorize("hasRole('ROLE_MODERATOR')")
     @Operation(summary = "Delete an article", description = "Method used to delete an article")
     public ResponseEntity<AppResponse<String>> deleteArticle(@PathVariable(name = "articleId") String articleId,
                                                              @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage lang) {
@@ -126,6 +123,15 @@ public class ArticleController {
         return ResponseEntity.ok(response);
     }
 
+    @GetMapping("/tag")
+    @Operation(summary = "Get articles by tag name", description = "Method used to get article by tag name")
+    public ResponseEntity<List<ArticleShortInfo>> getArticlesByTagName(@RequestParam(name = "tagName") String tagName,
+                                                                       @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage lang) {
+
+        List<ArticleShortInfo> response = articleService.getArticlesByTagName(tagName, lang);
+        return ResponseEntity.ok(response);
+    }
+
     @GetMapping("/latest/{articleId}")
     @Operation(summary = "Get latest 4 articles on the same section", description = "Method used to get latest 4 articles on the same section")
     public ResponseEntity<List<ArticleShortInfo>> getLatest4ArticleOnSameSectionExcludingArticleId(@PathVariable(name = "articleId") String articleId,
@@ -175,7 +181,6 @@ public class ArticleController {
     }
 
     @PostMapping("/private-moderator/filter")
-    @PreAuthorize("hasRole('ROLE_MODERATOR')")
     @Operation(summary = "Filter Articles By Moderators", description = "Method used to filter articles by moderators")
     public ResponseEntity<Page<ArticleShortInfo>> filterArticlesForModerators(@RequestParam(name = "page", defaultValue = "1") Integer page,
                                                                               @RequestParam(name = "size", defaultValue = "5") Integer size,

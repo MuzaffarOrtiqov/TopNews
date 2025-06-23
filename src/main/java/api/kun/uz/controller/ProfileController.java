@@ -18,7 +18,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/v1/profile/")
+@RequestMapping("/api/v1/profile")
 @Tag(name = "ProfileController", description = "A set of APIs to work with profile")
 @Slf4j
 public class ProfileController {
@@ -65,8 +65,7 @@ public class ProfileController {
         return ResponseEntity.ok(response);
     }
 
-    @PostMapping("/create")
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PostMapping("/admin/create")
     @Operation(summary = "Create a new profile", description = "Method used to create a new profile")
     public ResponseEntity<ProfileInfoDTO> createProfile(@Valid @RequestBody ProfileCreateDTO profileCreateDTO,
                                                         @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage lang) {
@@ -77,7 +76,6 @@ public class ProfileController {
     }
 
     @PutMapping("/admin/detail/{profileId}")
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @Operation(summary = "Update profile detail by admin", description = "Method used to update details of a profile by admin")
     public ResponseEntity<ProfileInfoDTO> updateDetail(@PathVariable(name = "profileId") String profileId,
                                                        @Valid @RequestBody ProfileDetailUpdateAdminDTO profile,
@@ -89,7 +87,6 @@ public class ProfileController {
     }
 
     @PutMapping("/admin/pagination")
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @Operation(summary = "Pagination", description = "Method used to get all profiles in paginated form")
     public ResponseEntity<Page<ProfileInfoDTO>> pagination(@RequestParam(name = "page") Integer page,
                                                            @RequestParam(name = "size") Integer size,
@@ -100,7 +97,6 @@ public class ProfileController {
     }
 
     @DeleteMapping("/admin/delete/{profileId}")
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @Operation(summary = "Delete an existing profile", description = "Method used to delete an existing profile")
     public ResponseEntity<AppResponse<String>> delete(@PathVariable(name = "profileId") String profileId,
                                                       @RequestHeader(value = "Accept-Language", defaultValue = "UZ") AppLanguage lang) {
@@ -111,7 +107,6 @@ public class ProfileController {
     }
 
     @PostMapping("/admin/filter")
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @Operation(summary = "Filter users", description = "Method used to fileter users")
     public ResponseEntity<Page<ProfileInfoDTO>> filter(@RequestParam(name = "page",defaultValue = "1") Integer page,
                                                        @RequestParam(name = "size",defaultValue = "5") Integer size,
