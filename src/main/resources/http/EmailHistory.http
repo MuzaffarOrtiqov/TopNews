@@ -1,0 +1,26 @@
+
+### GET ALL EMAIL HISTORY OF A PROFILE
+GET localhost:8080/api/v1/email-history/
+Content-Type: application/json
+Accept-Language: EN
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiUk9MRV9VU0VSLFJPTEVfUFVCTElTSEVSIiwiaWQiOiI2NTFlMjFhNS04N2ZkLTQwYmQtODk5MC1jYzNjNmViMDA4NzAiLCJzdWIiOiJzYW1hbmRhcnIwMTI3QGdtYWlsLmNvbSIsImlhdCI6MTc1MDMxNzY2NCwiZXhwIjoxNzUwOTIyNDY0fQ.I8jMLjI8rKF6nx_wZM05lxRtRAARDTHU1LrIMMTyNhXwfS-7DHX_SRcdGRAEZbN7OprwfgUrVUFXKSEpNwYEmg
+
+{
+  "email": "ortiqovmuzaffar171@gmail.com"
+}
+
+### GET ALL EMAIL HISTORY BY A GIVEN DATE
+GET localhost:8080/api/v1/email-history/date
+Content-Type: application/json
+Accept-Language: EN
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiUk9MRV9VU0VSLFJPTEVfUFVCTElTSEVSIiwiaWQiOiI2NTFlMjFhNS04N2ZkLTQwYmQtODk5MC1jYzNjNmViMDA4NzAiLCJzdWIiOiJzYW1hbmRhcnIwMTI3QGdtYWlsLmNvbSIsImlhdCI6MTc1MDMxNzY2NCwiZXhwIjoxNzUwOTIyNDY0fQ.I8jMLjI8rKF6nx_wZM05lxRtRAARDTHU1LrIMMTyNhXwfS-7DHX_SRcdGRAEZbN7OprwfgUrVUFXKSEpNwYEmg
+
+{
+  "date": "2025-06-23"
+}
+
+### GET ALL EMAIL HISTORY PAGINATION
+GET localhost:8080/api/v1/email-history/admin
+Content-Type: application/json
+Accept-Language: EN
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiUk9MRV9VU0VSLFJPTEVfUFVCTElTSEVSIiwiaWQiOiI2NTFlMjFhNS04N2ZkLTQwYmQtODk5MC1jYzNjNmViMDA4NzAiLCJzdWIiOiJzYW1hbmRhcnIwMTI3QGdtYWlsLmNvbSIsImlhdCI6MTc1MDMxNzY2NCwiZXhwIjoxNzUwOTIyNDY0fQ.I8jMLjI8rKF6nx_wZM05lxRtRAARDTHU1LrIMMTyNhXwfS-7DHX_SRcdGRAEZbN7OprwfgUrVUFXKSEpNwYEmg
